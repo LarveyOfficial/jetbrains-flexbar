@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.larvey.flexbar"
-version = "1.0.8"
+version = "1.0.9"
 
 kotlin {
     jvmToolchain(21)
@@ -39,7 +39,7 @@ tasks {
 intellijPlatform {
     pluginConfiguration {
         name = "FlexBar Integration"
-        version = "1.0.8"
+        version = "1.0.9"
         description = """
             Exposes a local HTTP server on <b>localhost:7123</b> so the FlexBar
             hardware can directly control your JetBrains IDE: run, debug, stop,
@@ -47,6 +47,8 @@ intellijPlatform {
         """.trimIndent()
         ideaVersion {
             sinceBuild = "241" // 2024.1
+            // No upper bound, so newer IDE builds (e.g. 263.*) can install the plugin
+            untilBuild = provider { null }
         }
     }
 }
